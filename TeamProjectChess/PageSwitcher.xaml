@@ -1,7 +1,7 @@
 ﻿<Window x:Class="TeamProjectChess.PageSwitcher"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="PageSwitcher" Height="650" Width="650" ResizeMode="NoResize">
+        Title="Chess Puzzles" Height="650" Width="650" ResizeMode="NoResize">
     <Grid>
         
     </Grid>
