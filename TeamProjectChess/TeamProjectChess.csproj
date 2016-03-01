@@ -73,13 +73,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\ChessPiece.cs" />
+    <Compile Include="Model\PieceType.cs" />
+    <Compile Include="Model\Player.cs" />
     <Compile Include="SwitchHelper\ISwitchable.cs" />
     <Compile Include="PageSwitcher.xaml.cs">
       <DependentUpon>PageSwitcher.xaml</DependentUpon>
     </Compile>
     <Compile Include="SwitchHelper\Switcher.cs" />
-    <Compile Include="View\BoardSample.xaml.cs">
-      <DependentUpon>BoardSample.xaml</DependentUpon>
+    <Compile Include="View\Board.xaml.cs">
+      <DependentUpon>Board.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
@@ -113,7 +116,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\BoardSample.xaml">
+    <Page Include="View\Board.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -179,7 +182,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\" />
     <Folder Include="ViewModel\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

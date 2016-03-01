@@ -67,7 +67,7 @@ namespace TeamProjectChess.View
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new PuzzleList());
+             Switcher.Switch(new PuzzleList());
         }
 
         private void NextPuzzle_Click(object sender, RoutedEventArgs e)

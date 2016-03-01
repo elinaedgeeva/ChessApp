@@ -34,5 +34,10 @@ namespace TeamProjectChess.View
         {
             Switcher.Switch(new PuzzleLevels());
         }
+
+        private void OpenButton_Click(object sender, RoutedEventArgs e)
+        {
+            Switcher.Switch(new Board());
+        }
     }
 }

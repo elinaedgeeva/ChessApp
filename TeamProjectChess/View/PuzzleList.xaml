@@ -7,5 +7,6 @@
              d:DesignHeight="600" d:DesignWidth="600">
     <Grid x:Name="PuzzleListLayout" Background="AntiqueWhite">
         <Button x:Name="BackButton" Width="150" Height="50" Margin="32,518,418,32" Content="НАЗАД" FontSize="20" Click="BackButton_Click"/>
+        <Button x:Name="OpenButton" Width="150" Height="50" Margin="418,518,32,32" Content="ОТКРЫТЬ" FontSize="20" Click="OpenButton_Click"/>
     </Grid>
 </UserControl>
