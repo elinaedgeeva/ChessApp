@@ -28,6 +28,7 @@ namespace TeamProjectChess.View
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             Switcher.Switch(new MainMenu());
+
         }
 
         private void DebutTips_Click(object sender, RoutedEventArgs e)

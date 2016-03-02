@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TeamProjectChess.Model"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="600">
+             d:DesignHeight="650" d:DesignWidth="650">
     
     <UserControl.Resources>
         <DrawingBrush x:Key="Checkerboard" Stretch="None" TileMode="Tile" Viewport="0,0,2,2" ViewportUnits="Absolute">
@@ -171,7 +171,7 @@
         </Grid.RowDefinitions>
         
         <Viewbox Grid.Column="1" Grid.ColumnSpan="8" Grid.RowSpan="8">
-        <ItemsControl Name="ChessBoard">
+        <ItemsControl Name="ChessBoard" MouseDown="ChessBoard_MouseDown" MouseUp="ChessBoard_MouseUp">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Canvas x:Name="CanvasBoard" Width="8" Height="8" Background="{StaticResource Checkerboard}" />

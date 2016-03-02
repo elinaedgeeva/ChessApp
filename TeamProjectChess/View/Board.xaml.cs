@@ -14,7 +14,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TeamProjectChess.Model;
-using TeamProjectChess.ViewModel;
 
 namespace TeamProjectChess.View
 {
@@ -24,6 +23,10 @@ namespace TeamProjectChess.View
     public partial class Board : UserControl
     {
         private ObservableCollection<ChessPiece> Pieces;
+        int k;
+        Point selectedSquare;
+        Point releasedSquare;
+        PieceType _pieceType;
 
         public Board()
         {
@@ -74,6 +77,29 @@ namespace TeamProjectChess.View
         private void NextPuzzle_Click(object sender, RoutedEventArgs e)
         {
             Switcher.Switch(new Board());
+        }
+
+        private void ChessBoard_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            int xCoord = (int)Mouse.GetPosition(ChessBoard).X;
+            int yCoord = (int)Mouse.GetPosition(ChessBoard).Y;
+            selectedSquare = new Point(xCoord, yCoord);
+            for (int i = 0; i < 32; i++)
+                if (Pieces[i].Pos == selectedSquare)
+                {
+                    k = i;
+                    _pieceType = Pieces[i].Type;
+                    break;
+                }
+        }
+
+        private void ChessBoard_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            int xCoordDest = (int)Mouse.GetPosition(ChessBoard).X;
+            int yCoordDest = (int)Mouse.GetPosition(ChessBoard).Y;
+            releasedSquare = new Point(xCoordDest, yCoordDest);
+            if (Pieces[k].IsMovePossible(selectedSquare, releasedSquare, Pieces[k].Type, ref Pieces))
+                Pieces[k].Pos = releasedSquare;
         }
     }
 }
