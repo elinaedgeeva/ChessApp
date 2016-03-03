@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TeamProjectChess.Model;
+using TeamProjectChess.ViewModel;
 
 namespace TeamProjectChess.View
 {
@@ -98,7 +99,7 @@ namespace TeamProjectChess.View
             int xCoordDest = (int)Mouse.GetPosition(ChessBoard).X;
             int yCoordDest = (int)Mouse.GetPosition(ChessBoard).Y;
             releasedSquare = new Point(xCoordDest, yCoordDest);
-            if (Pieces[k].IsMovePossible(selectedSquare, releasedSquare, Pieces[k].Type, ref Pieces))
+            if (Pieces[k].IsMovePossible(selectedSquare, releasedSquare, Pieces[k].Type, Pieces[k].Player, ref Pieces))
                 Pieces[k].Pos = releasedSquare;
         }
     }

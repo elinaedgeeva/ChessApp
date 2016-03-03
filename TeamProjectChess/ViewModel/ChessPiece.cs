@@ -59,7 +59,7 @@ namespace TeamProjectChess.ViewModel
             }
         }
 
-        public bool IsMovePossible(Point start, Point destination, PieceType pieceType, ref ObservableCollection<ChessPiece> _Pieces)
+        public bool IsMovePossible(Point start, Point destination, PieceType pieceType, Player player, ref ObservableCollection<ChessPiece> _Pieces)
         {
             Vector up = new Vector(0, -1);
             Vector down = new Vector(0, 1);
@@ -151,12 +151,14 @@ namespace TeamProjectChess.ViewModel
                         //}
                         #endregion
                         if (jump)
-                            //foreach (var item in _Pieces)
-                            //    if (item._Pos == destination)
-                            //        _Pieces.Remove(item);
                             for (int i = 0; i < _Pieces.Count; i++)
                                 if (_Pieces[i]._Pos == destination)
-                                    _Pieces.Remove(_Pieces[i]);
+                                    if (_Pieces[i].Player!=player)
+                                    {
+                                        _Pieces.Remove(_Pieces[i]);
+                                        break;
+                                    }
+                                    else { jump = false; break; }
                     }
 
                     if (suit && jump)
@@ -167,29 +169,41 @@ namespace TeamProjectChess.ViewModel
 
                 #region King
                 case PieceType.King:
+                    bool kingAble = false;
                     if (((start.X == destination.X + 1) || (start.X == destination.X - 1) || (start.X == destination.X))
                 && ((start.Y == destination.Y) || (start.Y == destination.Y - 1) || (start.Y == destination.Y + 1)))
                     {
+                        kingAble = true;
                         for (int i = 0; i < _Pieces.Count; i++)
                             if (_Pieces[i]._Pos == destination)
-                                _Pieces.Remove(_Pieces[i]);
-                        return true;
+                                if (_Pieces[i].Player != player)
+                                {
+                                    _Pieces.Remove(_Pieces[i]);
+                                    break;
+                                }
+                                else kingAble=false;
                     }
-                    else return false;
+                    return kingAble;
                     break;
                 #endregion
 
                 #region Knight
                 case PieceType.Knight:
+                    bool knightAble = false;
                     if (((Math.Abs(start.X - destination.X) == 1) && (Math.Abs(start.Y - destination.Y) == 2))
                 || ((Math.Abs(start.X - destination.X) == 2) && (Math.Abs(start.Y - destination.Y) == 1)))
                     {
+                        knightAble = true;
                         for (int i = 0; i < _Pieces.Count; i++)
                             if (_Pieces[i]._Pos == destination)
-                                _Pieces.Remove(_Pieces[i]);
-                        return true;
+                                if (_Pieces[i].Player != player)
+                                {
+                                    _Pieces.Remove(_Pieces[i]);
+                                    break;
+                                }
+                                else knightAble = false;
                     }
-                    else return false;
+                    return knightAble;
                     break;
                 #endregion
 
@@ -202,10 +216,12 @@ namespace TeamProjectChess.ViewModel
                     {
                         for (int i = 0; i < _Pieces.Count; i++)
                             if (_Pieces[i]._Pos == destination)
-                            {
-                                _Pieces.Remove(_Pieces[i]);
-                                pawnsTake = true;
-                            }
+                                if (_Pieces[i].Player != player)
+                                {
+                                    _Pieces.Remove(_Pieces[i]);
+                                    pawnsTake = true;
+                                    break;
+                                }
                     }
 
                     if (((start.X == destination.X) && (start.Y - 1 == destination.Y))
@@ -366,7 +382,12 @@ namespace TeamProjectChess.ViewModel
                         if (jumpQueen)
                             for (int i = 0; i < _Pieces.Count; i++)
                                 if (_Pieces[i]._Pos == destination)
-                                    _Pieces.Remove(_Pieces[i]);
+                                    if (_Pieces[i].Player != player)
+                                    {
+                                        _Pieces.Remove(_Pieces[i]);
+                                        break;
+                                    }
+                                    else { jumpQueen = false; break; }
                     }
 
                     if (queensBool && jumpQueen)
@@ -461,7 +482,12 @@ namespace TeamProjectChess.ViewModel
                         if (jumpRook)
                             for (int i = 0; i < _Pieces.Count; i++)
                                 if (_Pieces[i]._Pos == destination)
-                                    _Pieces.Remove(_Pieces[i]);
+                                    if (_Pieces[i].Player != player)
+                                    {
+                                        _Pieces.Remove(_Pieces[i]);
+                                        break;
+                                    }
+                                    else { jumpRook = false; break; }
                     }
 
                     if (rooksBool && jumpRook)
