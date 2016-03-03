@@ -81,6 +81,7 @@
     </Compile>
     <Compile Include="SwitchHelper\Switcher.cs" />
     <Compile Include="ViewModel\ChessPiece.cs" />
+    <Compile Include="ViewModel\Parser.cs" />
     <Compile Include="View\Board.xaml.cs">
       <DependentUpon>Board.xaml</DependentUpon>
     </Compile>
