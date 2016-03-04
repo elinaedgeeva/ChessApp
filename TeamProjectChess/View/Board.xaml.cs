@@ -25,6 +25,7 @@ namespace TeamProjectChess.View
     {
         private ObservableCollection<ChessPiece> Pieces = new ObservableCollection<ChessPiece>();
         int k,old;
+        bool taken=true;
         Point selectedSquare;
         Point releasedSquare;
         PieceType _pieceType;
@@ -102,10 +103,13 @@ namespace TeamProjectChess.View
             int xCoordDest = (int)Mouse.GetPosition(ChessBoard).X;
             int yCoordDest = (int)Mouse.GetPosition(ChessBoard).Y;
             releasedSquare = new Point(xCoordDest, yCoordDest);
-            if (Pieces[k].IsMovePossible(selectedSquare, releasedSquare, Pieces[k].Type, Pieces[k].Player, ref Pieces))
-                if (Pieces.Count == old - 1)
+            if (Pieces[k].IsMovePossible(selectedSquare, releasedSquare, Pieces[k].Type, Pieces[k].Player, ref Pieces, k, ref taken))
+            {
+                if (taken == false)
                     Pieces[k - 1].Pos = releasedSquare;
                 else Pieces[k].Pos = releasedSquare;
+                taken = true;
+            }
         }
     }
 }

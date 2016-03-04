@@ -59,7 +59,7 @@ namespace TeamProjectChess.ViewModel
             }
         }
 
-        public bool IsMovePossible(Point start, Point destination, PieceType pieceType, Player player, ref ObservableCollection<ChessPiece> _Pieces)
+        public bool IsMovePossible(Point start, Point destination, PieceType pieceType, Player player, ref ObservableCollection<ChessPiece> _Pieces, int k, ref bool taken)
         {
             Vector up = new Vector(0, -1);
             Vector down = new Vector(0, 1);
@@ -155,6 +155,8 @@ namespace TeamProjectChess.ViewModel
                                 if (_Pieces[i]._Pos == destination)
                                     if (_Pieces[i].Player!=player)
                                     {
+                                        if (i < k)
+                                            taken = false;
                                         _Pieces.Remove(_Pieces[i]);
                                         break;
                                     }
@@ -178,6 +180,8 @@ namespace TeamProjectChess.ViewModel
                             if (_Pieces[i]._Pos == destination)
                                 if (_Pieces[i].Player != player)
                                 {
+                                    if (i < k)
+                                        taken = false;
                                     _Pieces.Remove(_Pieces[i]);
                                     break;
                                 }
@@ -198,6 +202,8 @@ namespace TeamProjectChess.ViewModel
                             if (_Pieces[i]._Pos == destination)
                                 if (_Pieces[i].Player != player)
                                 {
+                                    if (i < k)
+                                        taken = false;
                                     _Pieces.Remove(_Pieces[i]);
                                     break;
                                 }
@@ -218,6 +224,8 @@ namespace TeamProjectChess.ViewModel
                             if (_Pieces[i]._Pos == destination)
                                 if (_Pieces[i].Player != player)
                                 {
+                                    if (i < k)
+                                        taken = false;
                                     _Pieces.Remove(_Pieces[i]);
                                     pawnsTake = true;
                                     break;
@@ -384,6 +392,8 @@ namespace TeamProjectChess.ViewModel
                                 if (_Pieces[i]._Pos == destination)
                                     if (_Pieces[i].Player != player)
                                     {
+                                        if (i < k)
+                                            taken = false;
                                         _Pieces.Remove(_Pieces[i]);
                                         break;
                                     }
@@ -484,6 +494,8 @@ namespace TeamProjectChess.ViewModel
                                 if (_Pieces[i]._Pos == destination)
                                     if (_Pieces[i].Player != player)
                                     {
+                                        if (i < k)
+                                            taken = false;
                                         _Pieces.Remove(_Pieces[i]);
                                         break;
                                     }
