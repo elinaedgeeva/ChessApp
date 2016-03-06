@@ -29,11 +29,12 @@ namespace TeamProjectChess.View
         Point selectedSquare;
         Point releasedSquare;
         PieceType _pieceType;
-        string testStringGame = "r1bqk1r1/pppn1p2/2npp2p/8/3PP1pb/2PB2B1/PP1N1PPP/R2Q1RK1";
+        string testStringGame = "6nr/rb3ppp/p4b2/2B5/1p2kP2/3Q3P/PPB1N1P1/1R2K2R";
 
         public Board()
         {
             InitializeComponent();
+            #region Initialize Start Position
             //this.Pieces = new ObservableCollection<ChessPiece>() {
             //    new ChessPiece{Pos=new Point(0, 6), Type=PieceType.Pawn, Player=Player.White},
             //    new ChessPiece{Pos=new Point(1, 6), Type=PieceType.Pawn, Player=Player.White},
@@ -68,6 +69,7 @@ namespace TeamProjectChess.View
             //    new ChessPiece{Pos=new Point(6, 0), Type=PieceType.Knight, Player=Player.Black},
             //    new ChessPiece{Pos=new Point(7, 0), Type=PieceType.Rook, Player=Player.Black}
             //};
+            #endregion
             Parser pr = new Parser();
             Pieces = pr.DisplayStartPos(testStringGame);
             ChessBoard.ItemsSource = Pieces;
