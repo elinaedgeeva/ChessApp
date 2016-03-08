@@ -24,7 +24,7 @@ namespace TeamProjectChess.View
     public partial class Board : UserControl
     {
         private ObservableCollection<ChessPiece> Pieces = new ObservableCollection<ChessPiece>();
-        int k,old;
+        int k;
         bool taken=true;
         Point selectedSquare;
         Point releasedSquare;
@@ -95,7 +95,6 @@ namespace TeamProjectChess.View
                 {
                     k = i;
                     _pieceType = Pieces[i].Type;
-                    old = Pieces.Count;
                     break;
                 }
         }
