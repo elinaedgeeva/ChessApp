@@ -8,5 +8,17 @@
     <Grid x:Name="PuzzleListLayout" Background="AntiqueWhite">
         <Button x:Name="BackButton" Width="150" Height="50" Margin="32,518,418,32" Content="НАЗАД" FontSize="20" Click="BackButton_Click"/>
         <Button x:Name="OpenButton" Width="150" Height="50" Margin="418,518,32,32" Content="ОТКРЫТЬ" FontSize="20" Click="OpenButton_Click"/>
+        <ListBox x:Name="PuzzleListBox"   Background="AntiqueWhite" BorderBrush="Black" FontSize="50" HorizontalAlignment="Center" Height="476" Margin="10,10,10,0" VerticalAlignment="Top" Width="580">
+          <!--<ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>-->
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="4"  />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
     </Grid>
 </UserControl>

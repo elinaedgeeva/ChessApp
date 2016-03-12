@@ -31,7 +31,7 @@ namespace TeamProjectChess.View
         PieceType _pieceType;
         string testStringGame = "6nr/rb3ppp/p4b2/2B5/1p2kP2/3Q3P/PPB1N1P1/1R2K2R";
 
-        public Board()
+        public Board(string str)
         {
             InitializeComponent();
             #region Initialize Start Position
@@ -71,7 +71,7 @@ namespace TeamProjectChess.View
             //};
             #endregion
             Parser pr = new Parser();
-            Pieces = pr.DisplayStartPos(testStringGame);
+            Pieces = pr.DisplayStartPos(str);
             ChessBoard.ItemsSource = Pieces;
         }
 
@@ -82,7 +82,9 @@ namespace TeamProjectChess.View
 
         private void NextPuzzle_Click(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new Board());
+            DBConnection dbc = new DBConnection();
+            string str = dbc.DisplayCertainPuzzle(7);
+            Switcher.Switch(new Board(str));
         }
 
         private void ChessBoard_MouseDown(object sender, MouseButtonEventArgs e)
