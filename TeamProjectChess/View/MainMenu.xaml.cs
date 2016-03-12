@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GalaSoft.MvvmLight;
+using TeamProjectChess.ViewModel;
 
 namespace TeamProjectChess.View
 {
@@ -44,6 +46,11 @@ namespace TeamProjectChess.View
         public void UtilizeState(object state)
         {
             throw new NotImplementedException();
+        }
+
+        private void VK_Share_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
