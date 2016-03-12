@@ -7,9 +7,8 @@
              d:DesignHeight="600" d:DesignWidth="600">
     <Grid x:Name="PuzzleTypeLayout" Background="AntiqueWhite">
         <Label x:Name="ChoosePuzzleType"  Width="389" Height="68" Margin="118,10,93,522" Content="Выберите тип задач" FontSize="40"/>
-        <Button x:Name="Debuts" Width="400" Height="100" Margin="107,87,93,413" Content="ДЕБЮТЫ" FontSize="30" Click="Debuts_Click"/>
-        <Button x:Name="BestMove"  Width="400" Height="100" Margin="107,227,93,273" Content="НАЙТИ ЛУЧШИЙ ХОД" FontSize="30" Click="BestMove_Click"/>
-        <Button x:Name="MateInMoves"  Width="400" Height="100" Margin="107,367,93,133" Content="МАТ В N ХОДОВ" FontSize="30" Click="MateInMoves_Click"/>
+        <Button x:Name="Debuts" Height="100" Margin="92,157,93,343" Content="ДЕБЮТЫ" FontSize="30" Click="Debuts_Click"/>
+        <Button x:Name="MateInMoves" Height="100" Margin="92,328,93,172" Content="МАТ В N ХОДОВ" FontSize="30" Click="MateInMoves_Click"/>
         <Button x:Name="BackButton"  Width="150" Height="50" Margin="32,518,418,32" Content="НАЗАД" FontSize="20" Click="BackButton_Click"/>
     </Grid>
 </UserControl>

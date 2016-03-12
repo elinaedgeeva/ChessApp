@@ -96,6 +96,7 @@
     </Compile>
     <Compile Include="SwitchHelper\Switcher.cs" />
     <Compile Include="ViewModel\ChessPiece.cs" />
+    <Compile Include="ViewModel\DBConnection.cs" />
     <Compile Include="ViewModel\Parser.cs" />
     <Compile Include="View\Board.xaml.cs">
       <DependentUpon>Board.xaml</DependentUpon>
@@ -105,9 +106,6 @@
     </Compile>
     <Compile Include="View\PlayersCard.xaml.cs">
       <DependentUpon>PlayersCard.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\PuzzleLevels.xaml.cs">
-      <DependentUpon>PuzzleLevels.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PuzzleList.xaml.cs">
       <DependentUpon>PuzzleList.xaml</DependentUpon>
@@ -141,10 +139,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PlayersCard.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\PuzzleLevels.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
