@@ -27,17 +27,13 @@ namespace TeamProjectChess.View
 
         private void Debuts_Click(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new PuzzleLevels());
+            Switcher.Switch(new PuzzleList());
         }
 
-        private void BestMove_Click(object sender, RoutedEventArgs e)
-        {
-            Switcher.Switch(new PuzzleLevels());
-        }
 
         private void MateInMoves_Click(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new PuzzleLevels());
+            Switcher.Switch(new PuzzleList());
         }
 
         public void UtilizeState(object state)
