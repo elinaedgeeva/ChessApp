@@ -65,7 +65,7 @@ namespace TeamProjectChess.ViewModel
                     HttpClient client = new HttpClient();
                     var response = client.GetAsync(uri).Result;
                     this.win.Close();
-                    MessageBox.Show("You have talked about our awesome application^^");
+                    MessageBox.Show("You have told about our awesome application^^");
                 }
             }
             else
