@@ -54,18 +54,26 @@ namespace TeamProjectChess.ViewModel
             string[] parts = e.Uri.AbsoluteUri.Split('#');
             if (parts[0] == "https://oauth.vk.com/blank.html")
             {
-                if (parts[1].Substring(0, 5) == "error") win.Close();
-                else if (parts[1].Substring(0, 12) == "access_token")
+                if (parts.Count() == 2)
                 {
-                    access_token = parts[1].Split('=')[1].Split('&')[0];
-                    user_id = parts[1].Split('&')[2].Split('=')[1];
-                    string message = "Join me in a fantastic new Chess Puzzle App";
-                    var str = string.Format("https://api.vk.com/method/wall.post?message={0}&access_token={1}", message, access_token);
-                    Uri uri = new Uri(str);
-                    HttpClient client = new HttpClient();
-                    var response = client.GetAsync(uri).Result;
-                    this.win.Close();
-                    MessageBox.Show("You have told about our awesome application^^");
+                    if (parts[1].Substring(0, 5) == "error") win.Close();
+                    else if (parts[1].Substring(0, 12) == "access_token")
+                    {
+                        access_token = parts[1].Split('=')[1].Split('&')[0];
+                        user_id = parts[1].Split('&')[2].Split('=')[1];
+                        string message = "Join me in a fantastic new Chess Puzzle App";
+                        var str = string.Format("https://api.vk.com/method/wall.post?message={0}&access_token={1}", message, access_token);
+                        Uri uri = new Uri(str);
+                        HttpClient client = new HttpClient();
+                        var response = client.GetAsync(uri).Result;
+                        this.win.Close();
+                        MessageBox.Show("You have told about our awesome application^^");
+                    }
+                }
+                else
+                {
+                    win.Close();
+                    MessageBox.Show("You should update your IE!!!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             else
