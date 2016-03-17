@@ -4,8 +4,26 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
+             xmlns:user="clr-namespace:TeamProjectChess.ViewModel"
              d:DesignHeight="600" d:DesignWidth="600">
-    <Grid x:Name="PlayersCArdLayout" Background="AntiqueWhite">
+    <UserControl.DataContext>
+        <user:DBConnection/>
+    </UserControl.DataContext>
+
+    <Grid x:Name="PlayersCArdLayout" Background="AntiqueWhite" >
         <Button x:Name="BackButton" Width="150" Height="50" Margin="32,518,418,32" Content="НАЗАД" FontSize="20" Click="BackButton_Click"/>
+        <Image x:Name="image" HorizontalAlignment="Left"  Height="250" VerticalAlignment="Top" Width="200" Margin="24,10,0,0"/>
+        <TextBlock x:Name="textblock1" HorizontalAlignment="Left" Height="61" Margin="237,74,0,0" TextWrapping="Wrap" FontSize="40" VerticalAlignment="Top" Width="361"/>
+        <TextBlock x:Name="textblock2" HorizontalAlignment="Left" Height="58" Margin="239,140,0,0" TextWrapping="Wrap" FontSize="40" VerticalAlignment="Top" Width="361"/>
+        <TextBlock x:Name="textblockCountry" HorizontalAlignment="Left" Height="57" Width="361" FontSize="40" Margin="237,203,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlockbirth" HorizontalAlignment="Left" Margin="296,279,0,0" TextWrapping="Wrap" Text="TextBlockBirth" FontSize="30"  VerticalAlignment="Top"  Height="39" Width="234"/>
+        <TextBlock x:Name="textBlockclassic" HorizontalAlignment="Left" Margin="296,325,0,0" TextWrapping="Wrap" Text="TextBlockClassic" VerticalAlignment="Top" FontSize="30" Height="39" Width="234"/>
+        <TextBlock x:Name="textBlockblitz" HorizontalAlignment="Left" Margin="296,373,0,0" TextWrapping="Wrap" Text="TextBlockBlitz" VerticalAlignment="Top" FontSize="30" Height="39" Width="234"/>
+        <TextBlock x:Name="textBlockrapid" HorizontalAlignment="Left" Margin="296,424,0,0" TextWrapping="Wrap" Text="TextBlockRapid" VerticalAlignment="Top" FontSize="30" Height="39" Width="234"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="24,279,0,0" TextWrapping="Wrap" FontSize="30" Text="Год рождения" VerticalAlignment="Top" Height="39" Width="234"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="24,325,0,0" TextWrapping="Wrap" FontSize="30" Text="Classic RateValue" VerticalAlignment="Top" Height="39" Width="234"/>
+        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="24,373,0,0" TextWrapping="Wrap" FontSize="30" Text="Blitz RateValue" VerticalAlignment="Top" Height="39" Width="234"/>
+        <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="24,424,0,0" TextWrapping="Wrap" FontSize="30" Text="Rapid RateValue" VerticalAlignment="Top" Height="39" Width="234"/>
+
     </Grid>
 </UserControl>
