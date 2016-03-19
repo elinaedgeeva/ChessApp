@@ -6,6 +6,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using TeamProjectChess.Model;
 <<<<<<< HEAD
 using System.Windows;
 =======
@@ -38,9 +40,7 @@ namespace TeamProjectChess.ViewModel
            
         }
 
-<<<<<<< HEAD
-         public string DisplayCertainPuzzle(int id, string puzzleTypeStr, string puzzleAtribute)
-=======
+         public string DisplayCertainPuzzle(int id, string puzzleTypeStr, string puzzleAtribute);
         public IEnumerable<int> GetRatingId()
         {
             cmd.Connection = connection;
@@ -182,7 +182,6 @@ namespace TeamProjectChess.ViewModel
         }
 
         public string DisplayCertainPuzzle(int id)
->>>>>>> 18b8fd12c4db192bbf54b1c47e45eef6b47a9446
         {
             cmd.Connection=connection;
             connection.Open();
