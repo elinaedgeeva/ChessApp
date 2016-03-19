@@ -54,7 +54,8 @@ namespace TeamProjectChess.View
                 int index = matetype.IndexOf('P');
                 string atributeStr = matetype.Remove(index);
                 atributeStr = String.Format(atributeStr + "StartPosition");
-                string str = dbc.DisplayCertainPuzzle((int)PuzzleListBox.SelectedItem,matetype,atributeStr);
+                //string str = dbc.DisplayCertainPuzzle((int)PuzzleListBox.SelectedItem,matetype,atributeStr);
+                string str = dbc.DisplayCertainPuzzle((int)PuzzleListBox.SelectedItem, matetype, atributeStr);
                 Switcher.Switch(new BoardMate(str));
             }
         }

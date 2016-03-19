@@ -8,10 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using TeamProjectChess.Model;
-<<<<<<< HEAD
 using System.Windows;
-=======
->>>>>>> 18b8fd12c4db192bbf54b1c47e45eef6b47a9446
 using TeamProjectChess.Model;
 
 namespace TeamProjectChess.ViewModel
@@ -23,6 +20,7 @@ namespace TeamProjectChess.ViewModel
         SqlDataReader reader;
         string commandStr;
         char firstLetter;
+        
 
         public IEnumerable<int> GetId(string puzzleTypeStr)
         {
@@ -40,7 +38,6 @@ namespace TeamProjectChess.ViewModel
            
         }
 
-         public string DisplayCertainPuzzle(int id, string puzzleTypeStr, string puzzleAtribute);
         public IEnumerable<int> GetRatingId()
         {
             cmd.Connection = connection;
@@ -181,7 +178,7 @@ namespace TeamProjectChess.ViewModel
             return value;
         }
 
-        public string DisplayCertainPuzzle(int id)
+        public string DisplayCertainPuzzle(int id, string puzzleTypeStr, string puzzleAtribute)
         {
             cmd.Connection=connection;
             connection.Open();

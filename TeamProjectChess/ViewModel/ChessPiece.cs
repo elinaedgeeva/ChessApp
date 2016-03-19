@@ -57,7 +57,7 @@ namespace TeamProjectChess.ViewModel
                     pt = Vector.Add(constVec, pt);
                 } while (pt != dest);
             }
-        }
+        } 
 
         public bool IsMovePossible(Point start, Point destination, PieceType pieceType, Player player, ref ObservableCollection<ChessPiece> _Pieces, int k, ref bool taken)
         {
