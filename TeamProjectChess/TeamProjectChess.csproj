@@ -67,8 +67,10 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.2.0.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
@@ -104,17 +106,32 @@
     <Compile Include="View\Board.xaml.cs">
       <DependentUpon>Board.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\BoardMate.xaml.cs">
+      <DependentUpon>BoardMate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BoardMateInThree.xaml.cs">
+      <DependentUpon>BoardMateInThree.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BoardMateInTwo.xaml.cs">
+      <DependentUpon>BoardMateInTwo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\LogInWin.xaml.cs">
       <DependentUpon>LogInWin.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\MateInN.xaml.cs">
+      <DependentUpon>MateInN.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PlayersCard.xaml.cs">
       <DependentUpon>PlayersCard.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PuzzleList.xaml.cs">
       <DependentUpon>PuzzleList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PuzzleListMate.xaml.cs">
+      <DependentUpon>PuzzleListMate.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PuzzleType.xaml.cs">
       <DependentUpon>PuzzleType.xaml</DependentUpon>
@@ -140,6 +157,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\BoardMate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BoardMateInThree.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BoardMateInTwo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\LogInWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -148,11 +177,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\MateInN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\PlayersCard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PuzzleList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PuzzleListMate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

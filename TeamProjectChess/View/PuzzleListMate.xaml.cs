@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,21 +13,25 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TeamProjectChess.ViewModel;
-using TeamProjectChess.Model;
 
 namespace TeamProjectChess.View
 {
     /// <summary>
-    /// Логика взаимодействия для PuzzleList.xaml
+    /// Логика взаимодействия для PuzzleListMate.xaml
     /// </summary>
-    public partial class PuzzleList : UserControl, ISwitchable
+    public partial class PuzzleListMate : UserControl, ISwitchable
     {
-        public PuzzleList()
+        string matetype;
+        string atributeStr;
+
+        public PuzzleListMate(string mateType)
         {
             InitializeComponent();
+            matetype = mateType;
             DBConnection dbc = new DBConnection();
-            List<int> Ids = dbc.GetId("DebutPuzzle").ToList();
-            PuzzleListBox.ItemsSource=Ids;
+            //mateType = String.Format(mateType + "Puzzle");
+            List<int> Ids = dbc.GetId(mateType).ToList();
+            PuzzleListBox.ItemsSource = Ids;
         }
 
         public void UtilizeState(object state)
@@ -38,7 +41,7 @@ namespace TeamProjectChess.View
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new PuzzleType());
+            Switcher.Switch(new MateInN());
         }
 
         private void OpenButton_Click(object sender, RoutedEventArgs e)
@@ -46,8 +49,13 @@ namespace TeamProjectChess.View
             if (PuzzleListBox.SelectedItem != null)
             {
                 DBConnection dbc = new DBConnection();
-                string str = dbc.DisplayCertainPuzzle(PuzzleListBox.SelectedIndex+1,"DebutPuzzle","DebutStartPosition");
-                Switcher.Switch(new Board(str));
+                //string atributeStr = String.Format(matetype + "StartPosition");
+                //matetype = String.Format(matetype + "Puzzle");
+                int index = matetype.IndexOf('P');
+                string atributeStr = matetype.Remove(index);
+                atributeStr = String.Format(atributeStr + "StartPosition");
+                string str = dbc.DisplayCertainPuzzle((int)PuzzleListBox.SelectedItem,matetype,atributeStr);
+                Switcher.Switch(new BoardMate(str));
             }
         }
     }

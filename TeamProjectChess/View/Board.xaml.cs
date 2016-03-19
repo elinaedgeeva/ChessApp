@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -29,7 +30,10 @@ namespace TeamProjectChess.View
         Point selectedSquare;
         Point releasedSquare;
         PieceType _pieceType;
-        string testStringGame = "6nr/rb3ppp/p4b2/2B5/1p2kP2/3Q3P/PPB1N1P1/1R2K2R";
+        DBConnection dbc = new DBConnection();
+        int CurrentId;
+        int count=0;
+        //string testStringGame = "6nr/rb3ppp/p4b2/2B5/1p2kP2/3Q3P/PPB1N1P1/1R2K2R";
 
         public Board(string str)
         {
@@ -73,6 +77,7 @@ namespace TeamProjectChess.View
             Parser pr = new Parser();
             Pieces = pr.DisplayStartPos(str);
             ChessBoard.ItemsSource = Pieces;
+            CurrentId = dbc.FindId(str,"DebutPuzzle","DebutStartPosition");
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -83,7 +88,7 @@ namespace TeamProjectChess.View
         private void NextPuzzle_Click(object sender, RoutedEventArgs e)
         {
             DBConnection dbc = new DBConnection();
-            string str = dbc.DisplayCertainPuzzle(7);
+            string str = dbc.DisplayCertainPuzzle(CurrentId+1,"DebutPuzzle","DebutStartPosition");
             Switcher.Switch(new Board(str));
         }
 
@@ -112,6 +117,25 @@ namespace TeamProjectChess.View
                     Pieces[k - 1].Pos = releasedSquare;
                 else Pieces[k].Pos = releasedSquare;
                 taken = true;
+
+                if (taken == false)
+                    Pieces[k - 1].Pos = selectedSquare;
+                else Pieces[k].Pos = selectedSquare;
+
+                if (count != 4)
+                {
+                    if (dbc.IsMoveCorrectDebut(CurrentId, Pieces[k].Type, releasedSquare))
+                    {
+                        
+                        Info.AppendText("Верно! ");
+                        if (count == 3)
+                        {
+                            Info.AppendText("\nЗадача решена! Перейдите к следующей.");
+                        }
+                        count++;
+                    }
+                    else Info.AppendText("Неверный ход! Попробуйте еще! ");
+                }
             }
         }
     }
