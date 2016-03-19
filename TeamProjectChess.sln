@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamProjectChess", "TeamProjectChess\TeamProjectChess.csproj", "{2277186E-3E55-4FB0-A238-828A88BC03E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamProjectChessTest", "TeamProjectChessTest\TeamProjectChessTest.csproj", "{5E2944F2-347B-4ADA-87C9-CD005EE98AB5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{2277186E-3E55-4FB0-A238-828A88BC03E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2277186E-3E55-4FB0-A238-828A88BC03E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2277186E-3E55-4FB0-A238-828A88BC03E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E2944F2-347B-4ADA-87C9-CD005EE98AB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E2944F2-347B-4ADA-87C9-CD005EE98AB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E2944F2-347B-4ADA-87C9-CD005EE98AB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E2944F2-347B-4ADA-87C9-CD005EE98AB5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
