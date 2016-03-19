@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TeamProjectChess.ViewModel;
 
 namespace TeamProjectChess.View
 {
@@ -20,10 +21,34 @@ namespace TeamProjectChess.View
     /// </summary>
     public partial class PlayersCard : UserControl, ISwitchable
     {
-        public PlayersCard()
+        public PlayersCard(int str)
         {
             InitializeComponent();
+            string imagename = string.Format("C:\\Users\\Олег\\Source\\Repos\\ChessApp\\TeamProjectChess\\Resources\\{0}.png", str);
+            DBConnection dbc = new DBConnection();
+            BitmapImage bi3 = new BitmapImage();
+            bi3.BeginInit();
+            bi3.UriSource = new Uri(@imagename);
+            bi3.EndInit();
+            image.Stretch = Stretch.Fill;
+            image.Source = bi3;
+
+            string[] name_surname= dbc.Getname(str.ToString()).Split(' ');
+             int itr=name_surname.Count();
+            string name=null;
+           textblock1.Text = name_surname[0];
+            for (int i = 1; i < itr; i++)
+                name += name_surname[i]+" ";
+            textblock2.Text = name;
+
+            textblockCountry.Text = dbc.GetRatingCountry(str.ToString());
+            textBlockbirth.Text= dbc.GetRatingBirthYear(str.ToString());
+            textBlockclassic.Text = dbc.GetRatingClassicValueRate(str.ToString());
+            textBlockblitz.Text = dbc.GetRatingBlitzValueRate(str.ToString());
+            textBlockrapid.Text = dbc.GetRatingRapidValueRate(str.ToString());
+            
         }
+        
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {

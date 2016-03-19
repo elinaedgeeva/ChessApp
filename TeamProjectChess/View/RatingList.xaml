@@ -5,13 +5,32 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="600">
+
     <Grid x:Name="RatingListLayout" Background="AntiqueWhite">
-        <!--<Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"></ColumnDefinition>
-            <ColumnDefinition Width="2*"></ColumnDefinition>
-            <ColumnDefinition Width="2*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>-->
+        
         <Button x:Name="BackButton" Width="150" Height="50" Margin="32,518,418,32" Content="НАЗАД" FontSize="20" Click="BackButton_Click"/>
         <Button x:Name="ShowButton" Width="150" Height="50" Margin="418,518,32,32" Content="ОТКРЫТЬ" FontSize="20" Click="ShowButton_Click"/>
+        <ListView x:Name="RatingListView"   Background="White" BorderBrush="Black" FontSize="30" HorizontalAlignment="Center" Height="476" Margin="10,10,10,0" VerticalAlignment="Top" Width="580">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+
+                        <GridViewColumn Header="№" Width="50" DisplayMemberBinding="{Binding Rank}"></GridViewColumn>
+                       
+                        <GridViewColumn Header="Image">
+
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image  Source="{Binding ImageName}" Width="100" Height="100" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name" Width="391" ></GridViewColumn>
+                        
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+
+        </ListView>
     </Grid>
 </UserControl>
