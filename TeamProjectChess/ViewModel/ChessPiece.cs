@@ -150,17 +150,8 @@ namespace TeamProjectChess.ViewModel
                         //    } while (pt != destination);
                         //}
                         #endregion
-                        if (jump)
-                            for (int i = 0; i < _Pieces.Count; i++)
-                                if (_Pieces[i]._Pos == destination)
-                                    if (_Pieces[i].Player!=player)
-                                    {
-                                        if (i < k)
-                                            taken = false;
-                                        _Pieces.Remove(_Pieces[i]);
-                                        break;
-                                    }
-                                    else { jump = false; break; }
+                        //if (jump)
+                            
                     }
 
                     if (suit && jump)

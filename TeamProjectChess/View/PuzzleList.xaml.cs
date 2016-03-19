@@ -27,7 +27,7 @@ namespace TeamProjectChess.View
         {
             InitializeComponent();
             DBConnection dbc = new DBConnection();
-            List<int> Ids = dbc.GetDebutId().ToList();
+            List<int> Ids = dbc.GetId("DebutPuzzle").ToList();
             PuzzleListBox.ItemsSource=Ids;
         }
 
@@ -46,7 +46,7 @@ namespace TeamProjectChess.View
             if (PuzzleListBox.SelectedItem != null)
             {
                 DBConnection dbc = new DBConnection();
-                string str = dbc.DisplayCertainPuzzle(PuzzleListBox.SelectedIndex+1);
+                string str = dbc.DisplayCertainPuzzle(PuzzleListBox.SelectedIndex+1,"DebutPuzzle","DebutStartPosition");
                 Switcher.Switch(new Board(str));
             }
         }

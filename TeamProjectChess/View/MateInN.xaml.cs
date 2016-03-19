@@ -16,34 +16,34 @@ using System.Windows.Shapes;
 namespace TeamProjectChess.View
 {
     /// <summary>
-    /// Логика взаимодействия для PuzzleType.xaml
+    /// Логика взаимодействия для MateInN.xaml
     /// </summary>
-    public partial class PuzzleType : UserControl, ISwitchable
+    public partial class MateInN : UserControl
     {
-        public PuzzleType()
+        public MateInN()
         {
             InitializeComponent();
+
         }
 
-        private void Debuts_Click(object sender, RoutedEventArgs e)
+        private void MateInOne_Click(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new PuzzleList());
+            Switcher.Switch(new PuzzleListMate("MateInOnePuzzle"));
         }
 
-
-        private void MateInMoves_Click(object sender, RoutedEventArgs e)
+        private void MateInTwo_Click(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new MateInN());
+            Switcher.Switch(new PuzzleListMate("MateInTwoPuzzle"));
         }
 
-        public void UtilizeState(object state)
+        private void MateInThree_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            Switcher.Switch(new PuzzleListMate("MateInThreePuzzle"));
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new MainMenu());
+            Switcher.Switch(new PuzzleType());
         }
     }
 }
