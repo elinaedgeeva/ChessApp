@@ -15,7 +15,7 @@ namespace TeamProjectChess.ViewModel
 {
     public class DBConnection: ViewModelBase
     {
-        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Олег\Source\Repos\ChessApp\TeamProjectChess\PuzzlesDB.mdf;Integrated Security=True");
+        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=X:\TeamProjectChess\TeamProjectChess\PuzzlesDB.mdf;Integrated Security=True");
         SqlCommand cmd = new SqlCommand();
         SqlDataReader reader;
         string commandStr;
@@ -321,105 +321,154 @@ namespace TeamProjectChess.ViewModel
             //connection.Open();
             reader.Close();
             string puzzleAtribute;
-            switch(moveNum)
+            bool comp = false;
+            //Point compMove;
+            switch (moveNum)
             {
                 case 1: puzzleAtribute = "MoveOne"; break;
-                case 2: puzzleAtribute = "CompOne"; break;
+                case 2: puzzleAtribute = "CompOne"; comp = true; break;
                 case 3: puzzleAtribute = "MoveTwo"; break;
-                case 4: puzzleAtribute = "CompTwo"; break;
+                case 4: puzzleAtribute = "CompTwo"; comp = true; break;
                 case 5: puzzleAtribute = "MoveThree"; break;
                 default: puzzleAtribute = ""; break;
             }
-            commandStr = String.Format("select {0} from {1} where Id={2}", puzzleAtribute,puzzleTypeStr, id);
+            commandStr = String.Format("select {0} from {1} where Id={2}", puzzleAtribute, puzzleTypeStr, id);
             cmd.CommandText = commandStr;
             reader = cmd.ExecuteReader();
             string AnswerString;
             if (reader.Read())
-                AnswerString = reader.GetString(reader.GetOrdinal("MoveOne"));
+                AnswerString = reader.GetString(reader.GetOrdinal(puzzleAtribute));
             else AnswerString = "";
             bool done = false;
-            switch(AnswerString.ElementAt(0))
-            {
-                case 'N':
-                    {
-                        int xcooord = (int)Char.GetNumericValue(AnswerString.ElementAt(2));
-                        int ycoord = (int)Char.GetNumericValue(AnswerString.ElementAt(4));
-                        if ((new Point(xcooord, ycoord) == releasedSquare) && (pieceType == PieceType.Knight))
+            reader.Close();
+            #region Switch
+                switch (AnswerString.ElementAt(0))
+                {
+                    case 'N':
                         {
-                            done = true;
+                            int xcooord = (int)Char.GetNumericValue(AnswerString.ElementAt(2));
+                            int ycoord = (int)Char.GetNumericValue(AnswerString.ElementAt(4));
+
+                            if ((new Point(xcooord, ycoord) == releasedSquare) && (pieceType == PieceType.Knight))
+                            {
+                                done = true;
+                            }
+                            break;
                         }
-                        break;
-                    }
-                case 'B':
-                    {
-                        int xcooord = (int)Char.GetNumericValue(AnswerString.ElementAt(2));
-                        int ycoord = (int)Char.GetNumericValue(AnswerString.ElementAt(4));
-                        if ((new Point(xcooord, ycoord) == releasedSquare) && (pieceType == PieceType.Bishop))
+                    case 'B':
                         {
-                            done = true;
+                            int xcooord = (int)Char.GetNumericValue(AnswerString.ElementAt(2));
+                            int ycoord = (int)Char.GetNumericValue(AnswerString.ElementAt(4));
+                            if ((new Point(xcooord, ycoord) == releasedSquare) && (pieceType == PieceType.Bishop))
+                            {
+                                done = true;
+                            }
+                            break;
                         }
-                        break;
-                    }
-                case 'R':
-                    {
-                        int xcooord = (int)Char.GetNumericValue(AnswerString.ElementAt(2));
-                        int ycoord = (int)Char.GetNumericValue(AnswerString.ElementAt(4));
-                        if ((new Point(xcooord, ycoord) == releasedSquare) && (pieceType == PieceType.Rook))
+                    case 'R':
                         {
-                            done = true;
+                            int xcooord = (int)Char.GetNumericValue(AnswerString.ElementAt(2));
+                            int ycoord = (int)Char.GetNumericValue(AnswerString.ElementAt(4));
+                            if ((new Point(xcooord, ycoord) == releasedSquare) && (pieceType == PieceType.Rook))
+                            {
+                                done = true;
+                            }
+                            break;
                         }
-                        break;
-                    }
-                case 'Q':
-                    {
-                        int xcooord = (int)Char.GetNumericValue(AnswerString.ElementAt(2));
-                        int ycoord = (int)Char.GetNumericValue(AnswerString.ElementAt(4));
-                        if ((new Point(xcooord, ycoord) == releasedSquare) && (pieceType == PieceType.Queen))
+                    case 'Q':
                         {
-                            done = true;
+                            int xcooord = (int)Char.GetNumericValue(AnswerString.ElementAt(2));
+                            int ycoord = (int)Char.GetNumericValue(AnswerString.ElementAt(4));
+                            if ((new Point(xcooord, ycoord) == releasedSquare) && (pieceType == PieceType.Queen))
+                            {
+                                done = true;
+                            }
+                            break;
                         }
-                        break;
-                    }
-                case 'K':
-                    {
-                        int xcooord = (int)Char.GetNumericValue(AnswerString.ElementAt(2));
-                        int ycoord = (int)Char.GetNumericValue(AnswerString.ElementAt(4));
-                        if ((new Point(xcooord, ycoord) == releasedSquare) && (pieceType == PieceType.King))
+                    case 'K':
                         {
-                            done = true;
+                            int xcooord = (int)Char.GetNumericValue(AnswerString.ElementAt(2));
+                            int ycoord = (int)Char.GetNumericValue(AnswerString.ElementAt(4));
+                            if ((new Point(xcooord, ycoord) == releasedSquare) && (pieceType == PieceType.King))
+                            {
+                                done = true;
+                            }
+                            break;
                         }
-                        break;
-                    }
-                case '(':
-                    {
-                        int xcooord = (int)Char.GetNumericValue(AnswerString.ElementAt(1));
-                        int ycoord = (int)Char.GetNumericValue(AnswerString.ElementAt(3));
-                        if ((new Point(xcooord, ycoord) == releasedSquare) && (pieceType == PieceType.Pawn))
+                    case '(':
                         {
-                            done = true;
+                            int xcooord = (int)Char.GetNumericValue(AnswerString.ElementAt(1));
+                            int ycoord = (int)Char.GetNumericValue(AnswerString.ElementAt(3));
+                            if ((new Point(xcooord, ycoord) == releasedSquare) && (pieceType == PieceType.Pawn))
+                            {
+                                done = true;
+                            }
+                            break;
                         }
-                        break;
-                    }
-                    if (done) break;
-            }
+                
+                if (done) break;
+                }
+            #endregion
             return done;
             reader.Close();
             connection.Close();
         }
-
-        //public bool IsMoveCorrectMate(int id, PieceType pieceType, Point releasedSquare,int moveNum)
-        //{
-        //    cmd.Connection = connection;
-        //    //connection.Open();
-        //    reader.Close();
-        //    commandStr = String.Format("select MoveOne from MateInOnePuzzle where Id={0}", id);
-        //    cmd.CommandText = commandStr;
-        //    reader = cmd.ExecuteReader();
-        //}
-
+                //if (done)
+                //    moveNum++
+        public void MakeCompMove(int id, string puzzleTypeStr, ref int moveNum, ref Point compStart, ref Point compEnd)
+        {
+            string puzzleAtribute;
+            bool comp = false;
+            switch (moveNum)
+            {
+                case 1: puzzleAtribute = "MoveOne"; break;
+                case 2: puzzleAtribute = "CompOne"; comp = true; break;
+                case 3: puzzleAtribute = "MoveTwo"; break;
+                case 4: puzzleAtribute = "CompTwo"; comp = true; break;
+                case 5: puzzleAtribute = "MoveThree"; break;
+                default: puzzleAtribute = ""; break;
+            }
+            commandStr = String.Format("select {0} from {1} where Id={2}", puzzleAtribute, puzzleTypeStr, id);
+            cmd.CommandText = commandStr;
+            reader = cmd.ExecuteReader();
+            string compAnswer;
+            if (reader.Read())
+                compAnswer = reader.GetString(reader.GetOrdinal(puzzleAtribute));
+            else compAnswer = "";
+            string[] FromTo = compAnswer.Split(new char[] { '-' });
+            for (int i = 0; i < 2; i++)
+            {
+                switch(FromTo[i].ElementAt(0))
+                {
+                    case '(':
+                        {   
+                            int xcooord = (int)Char.GetNumericValue(FromTo[i].ElementAt(1));
+                            int ycoord = (int)Char.GetNumericValue(FromTo[i].ElementAt(3));
+                            if (i == 0)
+                            compStart = new Point(xcooord, ycoord);
+                            else compEnd = new Point(xcooord, ycoord);
+                            break;
+                        }
+                    default :
+                        {
+                            int xcooord = (int)Char.GetNumericValue(FromTo[i].ElementAt(2));
+                            int ycoord = (int)Char.GetNumericValue(FromTo[i].ElementAt(4));
+                            if (i == 0)
+                                compStart = new Point(xcooord, ycoord);
+                            else compEnd = new Point(xcooord, ycoord);
+                            break;
+                        }
+                }
+            }
+            moveNum++;
+            
+        }
+        
+        
         public void ViewPuzzleList()
         {
 
         }
-    }
+}
+
 }

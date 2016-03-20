@@ -32,6 +32,8 @@ namespace TeamProjectChess.View
         DBConnection dbc = new DBConnection();
         int CurrentId;
         int count = 0;
+        Point compStart;
+        Point compEnd;
         
         public BoardMate(string str)
         {
@@ -93,7 +95,6 @@ namespace TeamProjectChess.View
                                         PiecesMate.Remove(PiecesMate[i]);
                                         break;
                                     }
-                                    //else { jump = false; break; }
                             if (taken == false)
                                 PiecesMate[k - 1].Pos = releasedSquare;
                             else PiecesMate[k].Pos = releasedSquare;

@@ -88,6 +88,15 @@ namespace TeamProjectChess.ViewModel
                         SpecDirection(vecDiv, down_left, start, destination, _Pieces, ref jump);
                         SpecDirection(vecDiv, down_right, start, destination, _Pieces, ref jump);
 
+                        for (int i = 0; i < _Pieces.Count; i++)
+                            if (_Pieces[i].Pos == destination)
+                                if (_Pieces[i].Player != _Pieces[k].Player)
+                                {
+                                    if (i < k)
+                                        taken = false;
+                                    _Pieces.Remove(_Pieces[i]);
+                                    break;
+                                }
                         #region "if-s"
                         //if (Equals(vecDiv, up_left))
                         //{
