@@ -3,9 +3,221 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TeamProjectChess.Model"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
+             d:DesignHeight="650" d:DesignWidth="650">
+
+    <UserControl.Resources>
+        <DrawingBrush x:Key="Checkerboard" Stretch="None" TileMode="Tile" Viewport="0,0,2,2" ViewportUnits="Absolute">
+            <DrawingBrush.Drawing>
+                <DrawingGroup>
+                    <GeometryDrawing Brush="Brown">
+                        <GeometryDrawing.Geometry>
+                            <RectangleGeometry Rect="0,0,2,2" />
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="Tan">
+                        <GeometryDrawing.Geometry>
+                            <GeometryGroup>
+                                <RectangleGeometry Rect="0,0,1,1" />
+                                <RectangleGeometry Rect="1,1,1,1" />
+                            </GeometryGroup>
+                        </GeometryDrawing.Geometry>
+                    </GeometryDrawing>
+                </DrawingGroup>
+            </DrawingBrush.Drawing>
+        </DrawingBrush>
+
+        <Style x:Key="ChessPieceStyle" TargetType="{x:Type Image}">
+            <Style.Triggers>
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding Type}" Value="{x:Static local:PieceType.Pawn}"/>
+                        <Condition Binding="{Binding Player}" Value="{x:Static local:Player.White}"/>
+                    </MultiDataTrigger.Conditions>
+                    <MultiDataTrigger.Setters>
+                        <Setter Property="Image.Source" x:Name="WhitePawn" Value="http://www.wpclipart.com/recreation/games/chess/chess_set_1/chess_piece_white_pawn_T.png" />
+                    </MultiDataTrigger.Setters>
+                </MultiDataTrigger>
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding Type}" Value="{x:Static local:PieceType.Rook}"/>
+                        <Condition Binding="{Binding Player}" Value="{x:Static local:Player.White}"/>
+                    </MultiDataTrigger.Conditions>
+                    <MultiDataTrigger.Setters>
+                        <Setter Property="Image.Source" Value="http://www.wpclipart.com/recreation/games/chess/chess_set_1/chess_piece_white_rook_T.png" />
+                    </MultiDataTrigger.Setters>
+                </MultiDataTrigger>
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding Type}" Value="{x:Static local:PieceType.Knight}"/>
+                        <Condition Binding="{Binding Player}" Value="{x:Static local:Player.White}"/>
+                    </MultiDataTrigger.Conditions>
+                    <MultiDataTrigger.Setters>
+                        <Setter Property="Image.Source" Value="http://www.wpclipart.com/recreation/games/chess/chess_set_1/chess_piece_white_knight_T.png" />
+                    </MultiDataTrigger.Setters>
+                </MultiDataTrigger>
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding Type}" Value="{x:Static local:PieceType.Bishop}"/>
+                        <Condition Binding="{Binding Player}" Value="{x:Static local:Player.White}"/>
+                    </MultiDataTrigger.Conditions>
+                    <MultiDataTrigger.Setters>
+                        <Setter Property="Image.Source" Value="http://www.wpclipart.com/recreation/games/chess/chess_set_1/chess_piece_white_bishop_T.png" />
+                    </MultiDataTrigger.Setters>
+                </MultiDataTrigger>
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding Type}" Value="{x:Static local:PieceType.Queen}"/>
+                        <Condition Binding="{Binding Player}" Value="{x:Static local:Player.White}"/>
+                    </MultiDataTrigger.Conditions>
+                    <MultiDataTrigger.Setters>
+                        <Setter Property="Image.Source" Value="http://www.wpclipart.com/recreation/games/chess/chess_set_1/chess_piece_white_queen_T.png" />
+                    </MultiDataTrigger.Setters>
+                </MultiDataTrigger>
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding Type}" Value="{x:Static local:PieceType.King}"/>
+                        <Condition Binding="{Binding Player}" Value="{x:Static local:Player.White}"/>
+                    </MultiDataTrigger.Conditions>
+                    <MultiDataTrigger.Setters>
+                        <Setter Property="Image.Source" Value="http://www.wpclipart.com/recreation/games/chess/chess_set_1/chess_piece_white_king_T.png" />
+                    </MultiDataTrigger.Setters>
+                </MultiDataTrigger>
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding Type}" Value="{x:Static local:PieceType.Pawn}"/>
+                        <Condition Binding="{Binding Player}" Value="{x:Static local:Player.Black}"/>
+                    </MultiDataTrigger.Conditions>
+                    <MultiDataTrigger.Setters>
+                        <Setter Property="Image.Source" Value="http://www.wpclipart.com/recreation/games/chess/chess_set_1/chess_piece_black_pawn_T.png" />
+                    </MultiDataTrigger.Setters>
+                </MultiDataTrigger>
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding Type}" Value="{x:Static local:PieceType.Rook}"/>
+                        <Condition Binding="{Binding Player}" Value="{x:Static local:Player.Black}"/>
+                    </MultiDataTrigger.Conditions>
+                    <MultiDataTrigger.Setters>
+                        <Setter Property="Image.Source" Value="http://www.wpclipart.com/recreation/games/chess/chess_set_1/chess_piece_black_rook_T.png" />
+                    </MultiDataTrigger.Setters>
+                </MultiDataTrigger>
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding Type}" Value="{x:Static local:PieceType.Knight}"/>
+                        <Condition Binding="{Binding Player}" Value="{x:Static local:Player.Black}"/>
+                    </MultiDataTrigger.Conditions>
+                    <MultiDataTrigger.Setters>
+                        <Setter Property="Image.Source" Value="http://www.wpclipart.com/recreation/games/chess/chess_set_1/chess_piece_black_knight_T.png" />
+                    </MultiDataTrigger.Setters>
+                </MultiDataTrigger>
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding Type}" Value="{x:Static local:PieceType.Bishop}"/>
+                        <Condition Binding="{Binding Player}" Value="{x:Static local:Player.Black}"/>
+                    </MultiDataTrigger.Conditions>
+                    <MultiDataTrigger.Setters>
+                        <Setter Property="Image.Source" Value="http://www.wpclipart.com/recreation/games/chess/chess_set_1/chess_piece_black_bishop_T.png" />
+                    </MultiDataTrigger.Setters>
+                </MultiDataTrigger>
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding Type}" Value="{x:Static local:PieceType.Queen}"/>
+                        <Condition Binding="{Binding Player}" Value="{x:Static local:Player.Black}"/>
+                    </MultiDataTrigger.Conditions>
+                    <MultiDataTrigger.Setters>
+                        <Setter Property="Image.Source" Value="http://www.wpclipart.com/recreation/games/chess/chess_set_1/chess_piece_black_queen_T.png" />
+                    </MultiDataTrigger.Setters>
+                </MultiDataTrigger>
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding Type}" Value="{x:Static local:PieceType.King}"/>
+                        <Condition Binding="{Binding Player}" Value="{x:Static local:Player.Black}"/>
+                    </MultiDataTrigger.Conditions>
+                    <MultiDataTrigger.Setters>
+                        <Setter Property="Image.Source" Value="http://www.wpclipart.com/recreation/games/chess/chess_set_1/chess_piece_black_king_T.png" />
+                    </MultiDataTrigger.Setters>
+                </MultiDataTrigger>
+            </Style.Triggers>
+        </Style>
+
+    </UserControl.Resources>
+
+    <Grid x:Name="BoardLayout" Background="AntiqueWhite">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="54"/>
+            <ColumnDefinition Width="54"/>
+            <ColumnDefinition Width="54"/>
+            <ColumnDefinition Width="54"/>
+            <ColumnDefinition Width="54"/>
+            <ColumnDefinition Width="54"/>
+            <ColumnDefinition Width="54"/>
+            <ColumnDefinition Width="54"/>
+            <ColumnDefinition Width="178"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="54"/>
+            <RowDefinition Height="54"/>
+            <RowDefinition Height="54"/>
+            <RowDefinition Height="54"/>
+            <RowDefinition Height="54"/>
+            <RowDefinition Height="54"/>
+            <RowDefinition Height="54"/>
+            <RowDefinition Height="54"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+
+        <Viewbox Grid.Column="1" Grid.ColumnSpan="8" Grid.RowSpan="8">
+            <ItemsControl Name="ChessBoardMateIn3" MouseDown="ChessBoardMateIn3_MouseDown" MouseUp="ChessBoardMateIn3_MouseUp">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas x:Name="CanvasBoard" Width="8" Height="8" Background="{StaticResource Checkerboard}" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Width="1" Height="1">
+                            <Image Name="PiecesImage" Width="0.8" Height="0.8" Style="{StaticResource ChessPieceStyle}" />
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemContainerStyle>
+                    <Style>
+                        <Setter Property="Canvas.Left" Value="{Binding Pos.X}" />
+                        <Setter Property="Canvas.Top" Value="{Binding Pos.Y}" />
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+            </ItemsControl>
+        </Viewbox>
+
+        <ListView x:Name="Notation" Width="Auto" Height="Auto" Margin="10,10,5,0" BorderBrush="Black" Background="Beige" Grid.Column="9" Grid.RowSpan="8"/>
+        <!--<Label x:Name="CoordinatesLetters" Width="Auto" Height="Auto" Content="            A                  B                 C                  D                  E                 F                  G                  H            "  
+               FontSize="10" Grid.Row="8" Grid.Column="1"  />-->
+        <Label x:Name="Eight" Width="Auto" Height="Auto" Content="8" FontSize="10" VerticalAlignment="Center" />
+        <Label x:Name="Seven" Width="Auto" Height="Auto" Content="7" FontSize="10" Grid.Row="1" VerticalAlignment="Center"/>
+        <Label x:Name="Six" Width="Auto" Height="Auto" Content="6" FontSize="10" Grid.Row="2" VerticalAlignment="Center"/>
+        <Label x:Name="Five" Width="Auto" Height="Auto" Content="5" FontSize="10" Grid.Row="3" VerticalAlignment="Center"/>
+        <Label x:Name="Four" Width="Auto" Height="Auto" Content="4" FontSize="10" Grid.Row="4" VerticalAlignment="Center"/>
+        <Label x:Name="Three" Width="Auto" Height="Auto" Content="3" FontSize="10" Grid.Row="5" VerticalAlignment="Center"/>
+        <Label x:Name="Two" Width="Auto" Height="Auto" Content="2" FontSize="10" Grid.Row="6" VerticalAlignment="Center"/>
+        <Label x:Name="One" Width="Auto" Height="Auto" Content="1" FontSize="10" Grid.Row="7" VerticalAlignment="Center"/>
+
+        <Label x:Name="A" Width="Auto" Height="Auto" Content="A" FontSize="10" Grid.Column="1" Grid.Row="8" HorizontalAlignment="Center"/>
+        <Label x:Name="B" Width="Auto" Height="Auto" Content="B" FontSize="10" Grid.Column="2" Grid.Row="8" HorizontalAlignment="Center"/>
+        <Label x:Name="C" Width="Auto" Height="Auto" Content="C" FontSize="10" Grid.Column="3" Grid.Row="8" HorizontalAlignment="Center"/>
+        <Label x:Name="D" Width="Auto" Height="Auto" Content="D" FontSize="10" Grid.Column="4" Grid.Row="8" HorizontalAlignment="Center"/>
+        <Label x:Name="E" Width="Auto" Height="Auto" Content="E" FontSize="10" Grid.Column="5" Grid.Row="8" HorizontalAlignment="Center"/>
+        <Label x:Name="F" Width="Auto" Height="Auto" Content="F" FontSize="10" Grid.Column="6" Grid.Row="8" HorizontalAlignment="Center"/>
+        <Label x:Name="G" Width="Auto" Height="Auto" Content="G" FontSize="10" Grid.Column="7" Grid.Row="8" HorizontalAlignment="Center"/>
+        <Label x:Name="H" Width="Auto" Height="Auto" Content="H" FontSize="10" Grid.Column="8" Grid.Row="8" HorizontalAlignment="Center"/>
+
+        <TextBox x:Name="Info" Width="Auto" Height="70" BorderBrush="Brown"  Grid.Row="9" Grid.ColumnSpan="10" Margin="10,0,5,10" VerticalAlignment="Top"/>
+        <Button x:Name="BackButton" Width="150" Height="50" Grid.ColumnSpan="5" Grid.Row="10" Content="Back to Puzzle List" FontSize="15" Click="BackButton_Click" VerticalAlignment="Top"/>
+        <Button x:Name="NextPuzzle" Width="150" Height="50" Grid.Column="9" Grid.Row="10" Content="Next Puzzle >>" FontSize="15" VerticalAlignment="Top" Click="NextPuzzle_Click"/>
     </Grid>
+
+
 </UserControl>

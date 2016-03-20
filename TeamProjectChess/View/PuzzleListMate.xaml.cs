@@ -49,14 +49,17 @@ namespace TeamProjectChess.View
             if (PuzzleListBox.SelectedItem != null)
             {
                 DBConnection dbc = new DBConnection();
-                //string atributeStr = String.Format(matetype + "StartPosition");
-                //matetype = String.Format(matetype + "Puzzle");
                 int index = matetype.IndexOf('P');
                 string atributeStr = matetype.Remove(index);
                 atributeStr = String.Format(atributeStr + "StartPosition");
-                //string str = dbc.DisplayCertainPuzzle((int)PuzzleListBox.SelectedItem,matetype,atributeStr);
                 string str = dbc.DisplayCertainPuzzle((int)PuzzleListBox.SelectedItem, matetype, atributeStr);
-                Switcher.Switch(new BoardMate(str));
+                switch (matetype)
+                {
+                    case "MateInOnePuzzle": Switcher.Switch(new BoardMate(str)); break;
+                    case "MateInTwoPuzzle": Switcher.Switch(new BoardMateInTwo(str)); break;
+                    case "MateInThreePuzzle": Switcher.Switch(new BoardMateInThree(str)); break;
+                }
+                //Switcher.Switch(new BoardMate(str));
             }
         }
     }

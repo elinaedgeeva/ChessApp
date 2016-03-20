@@ -24,7 +24,7 @@ namespace TeamProjectChess.View
         public PlayersCard(int str)
         {
             InitializeComponent();
-            string imagename = string.Format("C:\\Users\\Олег\\Source\\Repos\\ChessApp\\TeamProjectChess\\Resources\\{0}.png", str);
+            string imagename = string.Format("X:\\TeamProjectChess\\TeamProjectChess\\Resources\\{0}.png", str);
             DBConnection dbc = new DBConnection();
             BitmapImage bi3 = new BitmapImage();
             bi3.BeginInit();

@@ -171,7 +171,7 @@
         </Grid.RowDefinitions>
 
         <Viewbox Grid.Column="1" Grid.ColumnSpan="8" Grid.RowSpan="8">
-            <ItemsControl Name="ChessBoardMate" MouseDown="ChessBoardMate_MouseDown" MouseUp="ChessBoardMate_MouseUp">
+            <ItemsControl Name="ChessBoardMateIn2" MouseDown="ChessBoardMateIn2_MouseDown" MouseUp="ChessBoardMateIn2_MouseUp">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <Canvas x:Name="CanvasBoard" Width="8" Height="8" Background="{StaticResource Checkerboard}" />
