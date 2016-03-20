@@ -14,7 +14,6 @@ namespace TeamProjectChess.Model
         public int Rank { get; set; }
         public string ImageName { get; set; }
         public string Name { get; set; }
-        public Image Image { get; set; }
         public int BirthYear { get; set; }
         public string  Country { get; set; }
         public int ClassicRateValue { get; set; }

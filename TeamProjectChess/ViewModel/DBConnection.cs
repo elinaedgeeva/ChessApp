@@ -19,8 +19,7 @@ namespace TeamProjectChess.ViewModel
         SqlCommand cmd = new SqlCommand();
         SqlDataReader reader;
         string commandStr;
-        char firstLetter;
-        
+        char firstLetter;       
 
         public IEnumerable<int> GetId(string puzzleTypeStr)
         {
