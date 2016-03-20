@@ -22,7 +22,7 @@ namespace TeamProjectChess.ViewModel
         char firstLetter;       
 
         public IEnumerable<int> GetId(string puzzleTypeStr)
-        {
+        { 
             cmd.Connection = connection; 
             connection.Open();
             commandStr = String.Format("select Id from {0}", puzzleTypeStr);
