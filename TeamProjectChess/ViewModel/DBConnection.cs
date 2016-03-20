@@ -37,6 +37,27 @@ namespace TeamProjectChess.ViewModel
             connection.Close();
            
         }
+        ObservableCollection<Tip> coll_tips;
+        public ObservableCollection<Tip> GetTips(string str)
+        {
+            cmd.Connection = connection;
+            connection.Open();
+            commandStr = String.Format("select Tip from {0}", str);
+            cmd.CommandText = commandStr;
+            reader = cmd.ExecuteReader();
+            coll_tips = new ObservableCollection<Tip>();
+            while (reader.Read())
+            {
+                
+                coll_tips.Add( new Tip(reader.GetString(reader.GetOrdinal("Tip"))));
+               // yield return reader.GetInt32(reader.GetOrdinal("Id"));
+            }
+            reader.Close();
+            connection.Close();
+            return coll_tips;
+
+
+        }
 
         public IEnumerable<int> GetRatingId()
         {

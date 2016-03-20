@@ -13,6 +13,11 @@
         <Button x:Name="Puzzles"  Margin="100,96,100,404"  Width="400" Height="100" Content="ЗАДАЧИ" FontSize="40" Click="Puzzles_Click"/>
         <Button x:Name="Rating"  Margin="100,255,100,245"  Width="400" Height="100" Content="РЕЙТИНГ ТОП-50" FontSize="40" Click="Rating_Click"/>
         <Button x:Name="Tips" Margin="100,414,100,86"  Width="400" Height="100" Content="СОВЕТЫ" FontSize="40" Click="Tips_Click"/>
-        <Button x:Name="VK_Share" Content="{Binding Title}" Command="{Binding Share}"  HorizontalAlignment="Left" Margin="512,531,0,0" VerticalAlignment="Top" Width="78" Height="59" Click="VK_Share_Click"/>
+        <Button x:Name="VK_Share"  Command="{Binding Share}"  HorizontalAlignment="Left"  VerticalAlignment="Top" Width="76" Height="76" Click="VK_Share_Click" Margin="524,524,0,0">
+            <StackPanel>
+                <Image Source="/Resources/vk.jpg" Height="76" HorizontalAlignment="Center" VerticalAlignment="Center"  Width="76"/>
+                <TextBlock Text="" />
+            </StackPanel>
+        </Button>
     </Grid>
 </UserControl>

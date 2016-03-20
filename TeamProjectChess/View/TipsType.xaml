@@ -3,8 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="600">
+    
     <Grid x:Name="TipsTypeLayout" Background="AntiqueWhite">
         <Label x:Name="Instruction" Margin="132,10,120,536" Width="348" Height="54" FontSize="30" Content="Выберите тему советов" RenderTransformOrigin="0.499,-0.308"/>
         <Button x:Name="DebutTips"  Width="400" Height="100" Margin="99,84,101,416" FontSize="30" Content="ДЕБЮТ" Click="DebutTips_Click"/>
