@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TeamProjectChess.ViewModel;
+using TeamProjectChess.Model;
 
 namespace TeamProjectChess.View
 {
@@ -20,9 +23,15 @@ namespace TeamProjectChess.View
     /// </summary>
     public partial class TipsList : UserControl, ISwitchable
     {
-        public TipsList()
+        public TipsList(string str)
         {
+            string smth= str;
             InitializeComponent();
+            DBConnection dbc = new DBConnection();
+            ObservableCollection<Tip> coll= dbc.GetTips(str);
+            TipsListView.ItemsSource = coll;
+
+
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

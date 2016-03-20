@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TeamProjectChess.View"
         mc:Ignorable="d"
-        Title="LogInW
-        in" Height="300" Width="300">
-    <Grid>
-        <WebBrowser Name="webbrowser" HorizontalAlignment="Left" Height="269" VerticalAlignment="Top" Width="292"/>
+        Title="LogInWin" Height="417" Width="682">
+    <Grid Margin="0,0,0,0">
+
+        <WebBrowser Name="webbrowser" HorizontalAlignment="Center"  Width="675" Margin="0,0,0,0" />
 
     </Grid>
 </Window>

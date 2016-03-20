@@ -3,9 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:user="clr-namespace:TeamProjectChess.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="600">
+    <UserControl.DataContext>
+        <user:DBConnection/>
+    </UserControl.DataContext>
     <Grid x:Name="TipsListLayout" Background="AntiqueWhite">
         <Button x:Name="BackButton" Width="150" Height="50" Margin="32,518,418,32" Content="НАЗАД" FontSize="20" Click="BackButton_Click"/>
+        <ListView x:Name="TipsListView"   Background="White"  BorderBrush="Black" FontSize="30" HorizontalAlignment="Center" Height="476" Margin="10,10,10,0" VerticalAlignment="Top" Width="580">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+
+
+                        <GridViewColumn  Header="Tip" Width="550" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Padding="5,5,5,5" TextWrapping="WrapWithOverflow" Text="{Binding Name}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        
+
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+
+        </ListView>
     </Grid>
 </UserControl>

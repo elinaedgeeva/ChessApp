@@ -33,18 +33,23 @@ namespace TeamProjectChess.View
 
         private void DebutTips_Click(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new TipsList());
+
+            string type = "Debut";
+            Switcher.Switch(new TipsList(type));
         }
 
 
         private void MiddlegameTips_Click(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new TipsList());
+
+            string type = "Middlegame";
+            Switcher.Switch(new TipsList(type));
         }
 
         private void EndgameTips_Click(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new TipsList());
+            string type = "Endgame";
+            Switcher.Switch(new TipsList(type));
         }
 
         public void UtilizeState(object state)
